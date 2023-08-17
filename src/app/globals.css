@@ -1,27 +1,79 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: --intel-bold;
+  src: url(../assets/fonts/IntelligentBold_1.otf);
+}
+@font-face {
+  font-family: --intel-extrabold;
+  src: url(../assets/fonts/IntelligentExtrabold_1.otf);
+}
+@font-face {
+  font-family: --intel-light;
+  src: url(../assets/fonts/IntelligentLight.otf);
+}
+@font-face {
+  font-family: --intel-light-italic;
+  src: url(../assets/fonts/IntelligentLightItalic_1.otf);
+}
+@font-face {
+  font-family: --intel-regular;
+  src: url(../assets/fonts/IntelligentRegular_3.otf);
+}
+@font-face {
+  font-family: --intel-semibold;
+  src: url(../assets/fonts/IntelligentSemibold_1.otf);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root{
+  --primary-color: #fff;
+  --second-color:#000;
+  --orange:#D6A279;
+  --light-orange:#FCF8F5;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  font-family: --intel-regular;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+a,
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+li{
+  list-style: none;
+}
+
+/* custom antd */
+
+.Header_dropdown__bA5rj .ant-select-arrow {
+  color: white !important;
+  width: 11.2px !important;
+  height: 8px !important;
+  font-size: unset !important;
+}
+
+.Header_dropdown__bA5rj .ant-select-selection-item{
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
