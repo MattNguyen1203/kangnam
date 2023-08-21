@@ -1,3 +1,6 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @font-face {
   font-family: --intel-bold;
@@ -24,11 +27,11 @@
   src: url(../assets/fonts/IntelligentSemibold_1.otf);
 }
 
-:root{
+:root {
   --primary-color: #fff;
-  --second-color:#000;
-  --orange:#D6A279;
-  --light-orange:#FCF8F5;
+  --second-color: #000;
+  --orange: #d6a279;
+  --light-orange: #fcf8f5;
 }
 * {
   margin: 0;
@@ -45,6 +48,23 @@ body {
   font-family: --intel-regular;
 }
 
+/* Scroll-bar css */
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* element css*/
 a {
   text-decoration: none;
   color: unset;
@@ -59,21 +79,27 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-li{
+li {
   list-style: none;
 }
 
 /* custom antd */
 
-.Header_dropdown__bA5rj .ant-select-arrow {
-  color: white !important;
-  width: 11.2px !important;
-  height: 8px !important;
-  font-size: unset !important;
-}
-
-.Header_dropdown__bA5rj .ant-select-selection-item{
+.Header_dropdown__bA5rj .ant-select-selection-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  padding-inline-end: 0 !important;
+}
+
+.Header_dropdown__bA5rj .ant-select-item {
+  padding: 0;
+}
+
+.ant-select:hover .ant-select-selector {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+
+body.ant-drawer-open {
+  overflow-y: hidden !important;
 }

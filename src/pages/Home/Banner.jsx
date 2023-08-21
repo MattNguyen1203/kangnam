@@ -76,8 +76,8 @@ const Banner = () => {
           <span>Gợi ý:</span>
           <ul>
             <li>vinhomes central park</li>
-            <li>vinhomes central park</li>
-            <li>vinhomes central park</li>
+            <li>lumiere boulevard</li>
+            <li>glory heights</li>
           </ul>
         </div>
 

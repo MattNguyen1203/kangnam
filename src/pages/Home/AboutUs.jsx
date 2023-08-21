@@ -43,7 +43,10 @@ const AboutUs = () => {
         </div>
       </div>
       <div className={styles["about-img"]}>
-        <Image src={images.aboutImg} alt="" />
+        <Image src={images.about1} alt="" />
+        <Image src={images.about2} alt="" />
+        <Image src={images.about3} alt="" />
+        <Image src={images.about4} alt="" />
       </div>
     </div>
   );

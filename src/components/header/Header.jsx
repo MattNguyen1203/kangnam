@@ -5,7 +5,7 @@ import Image from "next/image";
 import images from "@/assets";
 import { Select, Space } from "antd";
 import Link from "next/link";
-import { CaretDownOutlined, FontColorsOutlined } from "@ant-design/icons";
+import { CaretDownOutlined } from "@ant-design/icons";
 
 const navList = [
   {
@@ -35,7 +35,7 @@ const navList = [
 ];
 const Header = () => {
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
+    // console.log(`selected ${value}`);
   };
   return (
     <div className={styles.wrapper}>
@@ -63,15 +63,20 @@ const Header = () => {
                 {
                   value: "korea",
                   label: (
-                    <>
+                    <div className={styles["dropdown-item"]}>
                       <Image src={images.korea} alt="" />
                       <span>Korea</span>
-                    </>
+                    </div>
                   ),
                 },
                 {
                   value: "vietnam",
-                  label: "Vietnam",
+                  label: (
+                    <div className={styles["dropdown-item"]}>
+                      <Image src={images.korea} alt="" />
+                      <span>Korea</span>
+                    </div>
+                  ),
                 },
               ]}
             />
