@@ -5,10 +5,11 @@ import styles from "@/styles/Home.module.css";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import { useRef } from "react";
 
-const AboutUs = () => {
+const AboutUs = ({ aboutUsRef }) => {
   return (
-    <div className={styles["about-wrapper"]}>
+    <div className={styles["about-wrapper"]} ref={aboutUsRef}>
       <div className={styles["about-container"]}>
         <span>Câu chuyện thương hiệu</span>
         <h2>Chúng tôi là ai</h2>

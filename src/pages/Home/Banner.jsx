@@ -16,7 +16,10 @@ const items = [
   },
 ];
 
-const Banner = () => {
+const Banner = ({ aboutUsRef }) => {
+  const handleMoveDown = () => {
+    aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className={styles["banner-wrapper"]}>
       <div className={styles["banner-container"]}>
@@ -140,7 +143,7 @@ const Banner = () => {
         </svg>
       </div>
 
-      <div className={styles["btn-down"]}>
+      <div className={styles["btn-down"]} onClick={handleMoveDown}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

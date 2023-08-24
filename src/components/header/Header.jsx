@@ -3,9 +3,9 @@
 import styles from "@/styles/Header.module.css";
 import Image from "next/image";
 import images from "@/assets";
-import { Select, Space } from "antd";
+
 import Link from "next/link";
-import { CaretDownOutlined } from "@ant-design/icons";
+import SelectLanguage from "./SelectLanguage";
 
 const navList = [
   {
@@ -34,9 +34,6 @@ const navList = [
   },
 ];
 const Header = () => {
-  const handleChange = (value) => {
-    // console.log(`selected ${value}`);
-  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.logo}>
@@ -53,34 +50,8 @@ const Header = () => {
         <button className={styles.btn}>Ký gửi BĐS</button>
         <div className={styles.language}>
           <div className={styles.title}>Chọn ngôn ngữ</div>
-          <Space wrap>
-            <Select
-              defaultValue="korea"
-              onChange={handleChange}
-              className={styles.dropdown}
-              suffixIcon={<CaretDownOutlined />}
-              options={[
-                {
-                  value: "korea",
-                  label: (
-                    <div className={styles["dropdown-item"]}>
-                      <Image src={images.korea} alt="" />
-                      <span>Korea</span>
-                    </div>
-                  ),
-                },
-                {
-                  value: "vietnam",
-                  label: (
-                    <div className={styles["dropdown-item"]}>
-                      <Image src={images.korea} alt="" />
-                      <span>Korea</span>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-          </Space>
+
+          <SelectLanguage />
         </div>
       </div>
     </div>

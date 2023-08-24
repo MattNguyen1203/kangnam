@@ -13,11 +13,11 @@ config.autoAddCss = false;
 export default function RootLayout({ children }) {
   const windowWidth = windowSize().width;
   const isMobile = windowWidth <= 576;
+
   return (
     <html lang="en">
       <body>
         {isMobile ? <HeaderSm /> : <Header />}
-
         {children}
         <Footer />
       </body>

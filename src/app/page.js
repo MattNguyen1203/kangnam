@@ -5,6 +5,7 @@ import { svgs } from "@/assets/svg";
 import { windowSize } from "@/hooks";
 import AboutUs from "@/pages/Home/AboutUs";
 import Banner from "@/pages/Home/Banner";
+import Features from "@/pages/Home/Features";
 import styles from "@/styles/Home.module.css";
 import { newsData } from "@/utils/configData";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -73,6 +74,8 @@ const fakeData = [
   },
 ];
 export default function Home() {
+  const aboutUsRef = useRef();
+
   const [locationActive, setLocationActive] = useState(1);
   const [progressVal, setProgressVal] = useState(0);
   const windowWidth = windowSize().width;
@@ -119,9 +122,10 @@ export default function Home() {
   };
   return (
     <div className={styles.wrapper}>
+      <Features />
       <section className={styles.header}>
-        <Banner />
-        <AboutUs />
+        <Banner aboutUsRef={aboutUsRef} />
+        <AboutUs aboutUsRef={aboutUsRef} />
       </section>
 
       <section className={styles["suggestion-wrapper"]}>
@@ -178,7 +182,7 @@ export default function Home() {
                     {group.map((item, index) => {
                       return (
                         <div key={index}>
-                          <Image src={item.content} />
+                          <Image src={item.content} alt="" />
                         </div>
                       );
                     })}
@@ -219,6 +223,7 @@ export default function Home() {
                 }
                 return (
                   <div
+                    key={index}
                     className={`row-span-2 col-span-2 sm:col-span-1 ${styles["big-item"]}`}
                   >
                     <figure>

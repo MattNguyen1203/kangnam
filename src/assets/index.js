@@ -17,7 +17,7 @@ const images = {
   slogan2: require("./imgs/slogan2.png"),
   slogan3: require("./imgs/slogan3.png"),
   brandLogo: require("./imgs/brandLogo.png"),
-  building: require("./imgs/building.png"),
+  building: require("./imgs/building.jpg"),
   building2: require("./imgs/building2.png"),
   footerLogo: require("./imgs/footerLogo.png"),
   icon1: require("./imgs/icon.png"),
@@ -27,6 +27,7 @@ const images = {
   icon5: require("./imgs/icon.png"),
   icon5: require("./imgs/icon.png"),
   navLogo: require("./imgs/nav-logo.png"),
+  feature: require("./imgs/feature.png"),
 };
 
 export default images;

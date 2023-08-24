@@ -3,6 +3,7 @@ import images from "@/assets";
 import { Drawer, Select, Space } from "antd";
 import Image from "next/image";
 import { svgs } from "@/assets/svg";
+import SelectLanguage from "./SelectLanguage";
 
 const items = [
   {
@@ -19,12 +20,12 @@ const Nav = ({ onClose, open }) => {
     <Drawer
       title={
         <header className={styles["nav-header"]}>
-          <Image src={images.navLogo} />
+          <Image src={images.navLogo} alt="" />
           <div className={styles["nav-header-input"]}>
             <div className={styles["nav-header-dropdown"]}>
               <Space>
                 <Select
-                  defaultValue="mua_nha"
+                  defaultValue="biet_thu"
                   // onChange={handleChange}
                   options={items}
                   bordered={false}
@@ -64,9 +65,10 @@ const Nav = ({ onClose, open }) => {
       </div>
 
       <div className={styles["nav-sub-list"]}>
-        <div>Về Kangnam</div>
-        <div>Tin tức</div>
-        <div>Liên hệ</div>
+        <div className={styles["sub-list-item"]}>Về Kangnam</div>
+        <div className={styles["sub-list-item"]}>Tin tức</div>
+        <div className={styles["sub-list-item"]}>Liên hệ</div>
+        <SelectLanguage />
       </div>
 
       <div className={styles["nav-info"]}>
