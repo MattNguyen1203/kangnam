@@ -3,9 +3,9 @@
 import styles from "@/styles/Header.module.css";
 import Image from "next/image";
 import images from "@/assets";
-
 import Link from "next/link";
 import SelectLanguage from "./SelectLanguage";
+import { useEffect, useRef, useState } from "react";
 
 const navList = [
   {
@@ -34,8 +34,43 @@ const navList = [
   },
 ];
 const Header = () => {
+  const [scrollUp, setScrollUp] = useState(false);
+  let lastScrollPosition = useRef(0);
+
+  useEffect(() => {
+    const checkScrollPosition = () => {
+      let currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (
+        currentScrollPosition < lastScrollPosition.current &&
+        currentScrollPosition !== 0
+      ) {
+        setScrollUp(true);
+        lastScrollPosition.current = currentScrollPosition;
+      } else {
+        setScrollUp(false);
+        lastScrollPosition.current = currentScrollPosition;
+      }
+    };
+
+    window.addEventListener("scroll", checkScrollPosition);
+
+    return () => window.removeEventListener("scroll", checkScrollPosition);
+  }, []);
+
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      style={
+        scrollUp
+          ? {
+              position: "fixed",
+              background: "rgba(0, 0, 0, 0.2)",
+            }
+          : {}
+      }
+    >
       <div className={styles.logo}>
         <Image src={images.logo} alt="" />
       </div>

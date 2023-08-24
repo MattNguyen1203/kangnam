@@ -4,7 +4,7 @@
   padding: 0 5.625vw 0 7.5vw;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
