@@ -60,7 +60,7 @@ export default function Slide() {
         <div className={styles["suggestion-locations"]}>
           {locations.map((location) => {
             return (
-              <>
+              <div key={location.key}>
                 <Image
                   src={location.url}
                   alt=""
@@ -71,7 +71,6 @@ export default function Slide() {
 
                 <div
                   className={styles["location"]}
-                  key={location.key}
                   onClick={() => {
                     setLocationActive(location.key);
                     setProgressVal(0);
@@ -84,7 +83,7 @@ export default function Slide() {
                   ></progress>
                   <div>{location.label}</div>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>

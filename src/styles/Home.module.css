@@ -987,8 +987,9 @@
   }
 
   /*slide*/
-  .group div {
-    width: calc((100vw - var(--padding) * 2 - 1px) / 3);
+  .group {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .group div:nth-child(3) {

@@ -6,8 +6,8 @@
 }
 
 .features-wrapper div {
-  width: 72px;
-  height: 72px;
+  width: 4.5vw;
+  height: 4.5vw;
   background-color: var(--primary-color);
   border-radius: 50%;
   display: flex;
@@ -34,5 +34,11 @@
 
   100% {
     box-shadow: 0 0 0 0.9vw rgba(189, 189, 189, 0);
+  }
+}
+
+@media (max-width: 576px) {
+  .features-wrapper {
+    display: none;
   }
 }
