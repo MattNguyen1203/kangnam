@@ -28,6 +28,7 @@ const images = {
   icon5: require("./imgs/icon.png"),
   navLogo: require("./imgs/nav-logo.png"),
   feature: require("./imgs/feature.png"),
+  suggestionHP: require("./imgs/suggestionHP.png"),
 };
 
 export default images;

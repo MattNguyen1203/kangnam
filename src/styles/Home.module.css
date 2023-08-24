@@ -411,10 +411,9 @@
   width: 100vw;
   height: 100vh;
   margin-top: 10vh;
-  background: url("../assets/imgs/suggestionHP.png") lightgray 50% / cover
-    no-repeat;
   padding: 0 var(--padding);
   position: relative;
+  overflow: hidden;
 }
 
 .suggestion-wrapper::before {
@@ -430,7 +429,20 @@
   top: 0;
   left: 0;
 }
+.suggestion-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 2s all ease;
+}
 
+.active-img {
+  opacity: 1;
+  animation: scaleUp 10s ease;
+}
 .suggestion-container {
   width: 100%;
   display: flex;
@@ -445,6 +457,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 100;
 }
 .suggestion-content h2 {
   font-family: --intel-extrabold;
@@ -485,6 +499,8 @@
   font-weight: 600;
   font-size: 1vw;
   cursor: pointer;
+  position: relative;
+  z-index: 100;
 }
 
 .progress {
@@ -502,6 +518,15 @@
   background-color: rgb(255, 255, 255);
 }
 
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.3);
+  }
+}
 /* partner*/
 .news-wrapper {
   margin-bottom: 131px;
@@ -561,27 +586,33 @@
   width: 100%;
   height: fit-content;
   z-index: 100;
-  /* margin: 56px 0 150px; */
+  overflow: hidden;
+  position: relative;
 }
 
 .group {
-  width: fit-content !important;
-  display: flex !important;
-  flex-wrap: wrap;
-  cursor: pointer;
-  background-color: var(--primary-color);
+  width: 100% !important;
+  height: fit-content !important;
+  display: grid !important;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
   border-radius: 16px;
 }
 
 .group div {
-  width: calc((100vw - var(--padding) * 2 - 1px) / 5);
-  padding: 3.8125vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   user-select: none;
+  padding: 3.8125vw;
+  background-color: var(--primary-color);
   border: 1px solid #e6e6e6;
+  position: relative;
+  z-index: 1000;
 }
 
 .group div:nth-child(1) {

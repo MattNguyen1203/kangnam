@@ -17,14 +17,22 @@
   cursor: pointer;
   position: relative;
 }
-.features-wrapper div:hover::before {
-  --width: 130%;
-  content: "";
-  width: var(--width);
-  height: var(--width);
-  border-radius: 50%;
-  /* background-color: rgba(255, 255, 255, 0.5); */
-  position: absolute;
-  top: calc((100% - var(--width)) / 2);
-  right: calc((100% - var(--width)) / 2);
+
+.features-wrapper div:hover {
+  animation: wave 0.5s;
+}
+
+.features-wrapper div:hover img {
+  transform: scale(1.2);
+  transition: 0.5s all ease;
+}
+
+@keyframes wave {
+  0% {
+    box-shadow: 0 0 0 0vw rgba(189, 189, 189, 0.8);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0.9vw rgba(189, 189, 189, 0);
+  }
 }

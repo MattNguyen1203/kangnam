@@ -2,6 +2,7 @@
 
 import images from "@/assets";
 import { svgs } from "@/assets/svg";
+import Slide from "@/components/others/Slide";
 import { windowSize } from "@/hooks";
 import AboutUs from "@/pages/Home/AboutUs";
 import Banner from "@/pages/Home/Banner";
@@ -13,27 +14,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Carousel } from "antd";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-// locations data for progress bar
-const locations = [
-  {
-    key: 1,
-    label: "01. Khu vực Bắc Từ Liêm, Hà Nội",
-  },
-
-  {
-    key: 2,
-    label: "02. Khu vực Thanh Xuân, Hà Nội",
-  },
-  {
-    key: 3,
-    label: "03. Khu vực Hà Đông, Hà Nội ",
-  },
-  {
-    key: 4,
-    label: "04. Khu vực Đống Đa, Hà Nội ",
-  },
-];
 
 const fakeData = [
   {
@@ -76,14 +56,12 @@ const fakeData = [
 export default function Home() {
   const aboutUsRef = useRef();
 
-  const [locationActive, setLocationActive] = useState(1);
-  const [progressVal, setProgressVal] = useState(0);
   const windowWidth = windowSize().width;
   const isMobile = windowWidth <= 576;
-  let totalSlideItem = useRef(null);
+  const [totalSlideItem, setTotalSlideItem] = useState(9);
 
   useEffect(() => {
-    totalSlideItem.current = isMobile ? 9 : 10;
+    setTotalSlideItem(isMobile ? 9 : 10);
   }, [isMobile]);
   // fake data
 
@@ -93,25 +71,16 @@ export default function Home() {
     if (index === fakeData.length - 1) {
       draft.push(element);
       result.push(draft);
-    } else if (index % (totalSlideItem.current - 1) > 0 || index === 0) {
+    } else if (index % (totalSlideItem - 1) > 0 || index === 0) {
       draft.push(element);
-    } else if (index % (totalSlideItem.current - 1) === 0) {
+    } else if (index % (totalSlideItem - 1) === 0) {
       draft.push(element);
       result.push(draft);
       draft = [];
     }
   });
-  // progress bar
-  useEffect(() => {
-    const running = setTimeout(() => {
-      setProgressVal((prev) => (prev < 100 ? prev + 1 : 100));
-    }, 30);
-    if (progressVal === 100) {
-      setLocationActive((prev) => (prev === 4 ? 1 : prev + 1));
-      setProgressVal(0);
-    }
-    return () => clearTimeout(running);
-  }, [locationActive, progressVal]);
+
+  console.log(result);
 
   // content-styles
 
@@ -128,38 +97,7 @@ export default function Home() {
         <AboutUs aboutUsRef={aboutUsRef} />
       </section>
 
-      <section className={styles["suggestion-wrapper"]}>
-        <div className={styles["suggestion-container"]}>
-          <div className={styles["suggestion-content"]}>
-            <h2>Nổi bật theo khu vực</h2>
-            <div>Căn hộ Vinhomes Grand Park hướng Bắc</div>
-            <button>
-              Chi tiết dự án <FontAwesomeIcon icon={faAngleRight} />
-            </button>
-          </div>
-          <div className={styles["suggestion-locations"]}>
-            {locations.map((location) => {
-              return (
-                <div
-                  className={styles["location"]}
-                  key={location.key}
-                  onClick={() => {
-                    setLocationActive(location.key);
-                    setProgressVal(0);
-                  }}
-                >
-                  <progress
-                    value={location.key === locationActive ? progressVal : 0}
-                    max={100}
-                    className={styles["progress"]}
-                  ></progress>
-                  <div>{location.label}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <Slide />
 
       <section className={styles["news-wrapper"]}>
         <div className={styles["partner-container"]}>
@@ -180,6 +118,7 @@ export default function Home() {
                 return (
                   <div className={styles.group} key={index}>
                     {group.map((item, index) => {
+                      const groupLength = group.length;
                       return (
                         <div key={index}>
                           <Image src={item.content} alt="" />
